@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Todo List</title>
+  <script src="app.js" defer></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    /* 3D card effect */
+    .todo-card {
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .todo-card:hover {
+      transform: perspective(600px) rotateX(10deg) rotateY(10deg) scale(1.05);
+    }
+
+    .input-3d {
+      background: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body class="bg-gray-200">
+  <div class="container mx-auto p-6">
+    <h1 class="text-4xl text-center font-bold mb-8">3D Todo List</h1>
+    
+    <!-- Form to add new task -->
+    <div class="bg-white p-6 rounded-lg shadow-lg mb-8">
+      <h2 class="text-2xl font-semibold mb-4">Add New Task</h2>
+      <form id="todoForm" class="grid grid-cols-1 gap-4">
+        <input type="text" id="title" placeholder="Title" class="input-3d p-3 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400">
+        <input type="text" id="description" placeholder="Description" class="input-3d p-3 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400">
+        <input type="date" id="dueDate" class="input-3d p-3 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400">
+        <select id="priority" class="input-3d p-3 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400">
+          <option value="Low">Low Priority</option>
+          <option value="Medium">Medium Priority</option>
+          <option value="High">High Priority</option>
+        </select>
+        <textarea id="notes" placeholder="Notes" class="input-3d p-3 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"></textarea>
+        <div class="input-3d p-3 border border-gray-300">
+          <h3 class="font-semibold">Checklist</h3>
+          <input type="text" id="checklistItem" placeholder="Add Checklist Item" class="p-2 mt-2 border border-gray-300 rounded">
+          <button type="button" id="addChecklistItem" class="ml-4 bg-blue-500 text-white p-2 rounded">Add</button>
+          <ul id="checklist" class="mt-4"></ul>
+        </div>
+        <button type="submit" class="bg-blue-500 text-white p-3 rounded-lg shadow-lg hover:bg-blue-600 transition">Add Task</button>
+      </form>
+    </div>
+
+    <!-- Task List -->
+    <div id="taskList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+  </div>
+</body>
+</html>
